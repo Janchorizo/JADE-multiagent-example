@@ -1,7 +1,9 @@
 package es.usal.pa.agentes_divertidos.agents;
 
-import es.usal.pa.agentes_divertidos.behaviours.OneShotJugador;
+import es.usal.pa.agentes_divertidos.behaviours.OneShotJugadorComienzo;
+import es.usal.pa.agentes_divertidos.behaviours.OneShotJugadorPartida;
 import jade.content.lang.sl.SLCodec;
+import jade.core.behaviours.SequentialBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
@@ -28,6 +30,9 @@ public class Jugador extends AgenteComunicador {
 			System.err.println("Error : Jugador.setup : Agent " + getLocalName() + ": " + e.getMessage());
 		}
 		
-		addBehaviour(new OneShotJugador());
+		SequentialBehaviour seq = new SequentialBehaviour();
+		seq.addSubBehaviour(new OneShotJugadorComienzo());
+		seq.addSubBehaviour(new OneShotJugadorPartida());
+		addBehaviour(seq);
 	}
 }

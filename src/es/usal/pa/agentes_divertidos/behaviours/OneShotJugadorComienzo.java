@@ -6,7 +6,7 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
-public class OneShotJugador extends OneShotBehaviour {
+public class OneShotJugadorComienzo extends OneShotBehaviour {
 	private static final long serialVersionUID = 1L;
 	private boolean finished = false;
 	
